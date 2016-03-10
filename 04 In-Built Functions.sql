@@ -1,3 +1,24 @@
+--Base String function
+select street_address, length(street_address) from addresses;
+select street_address, length(street_address) from addresses where length(street_address) > 15;
+
+select last_name, lpad(last_name, 12, ' ') from employees; -- lpad - three arguments, space is the padding. Right-justifies with a total width of 12
+select first_name, rpad(first_name, 9, '*') from employees;
+
+select website_url, ltrim(website_url, 'http://') from websites;
+
+select concat(first_name, last_name) from employees; -- concat takes only 2 arguments. Double pipe (||) is more commonly used.
+
+--Numeric Conversion
+select 1+1 from dual; -- gives numeric value of 2
+select to_number('1') + to_number('1') from dual; -- converts string to number and then add.
+
+select '1' + '1' from dual; -- works! ('a' + 'b' throws error)
+
+select last_name, to_number(to_char(signup_date, 'YYYY')) - to_number(to_char(start_date, 'YYYY')) years_between from employees;
+
+select to_number('$20,000.00', '$99,999.99') from dual;
+
 --Arithmetic functions
 select 12345/100, round(12345/100,1), round(12345/100,-1) from dual;
 
