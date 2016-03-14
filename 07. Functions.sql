@@ -49,3 +49,27 @@ begin
 	dbms_output.put_line(v_business_days);
 
 end;
+
+DECLARE
+
+	v_increment NUMBER := 3;
+
+	FUNCTION modit(
+		p_dividend IN NUMBER,
+		p_divisor IN NUMBER )
+	RETURN BOOLEAN
+	AS
+	BEGIN
+		RETURN (mod(p_dividend,p_divisor) = 0);
+	END;
+
+BEGIN
+
+	FOR I IN REVERSE 1..10
+	LOOP
+		IF modit(i,v_increment)
+		THEN
+			dbms_output.put_line(i);
+		END IF;
+	END LOOP;
+END;
